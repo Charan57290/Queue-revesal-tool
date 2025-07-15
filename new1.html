@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Queue Reversal</title>
+  <script defer>
+    function reverse() {
+      const val = document.getElementById('inp').value;
+      const nums = val.split(',').map(x => parseInt(x.trim())).filter(x => !isNaN(x));
+
+      let stk = [];
+      let rev = [];
+
+      for (let n of nums) stk.push(n);
+      while (stk.length) rev.push(stk.pop());
+
+      document.getElementById('out').textContent = "Reversed: " + rev.join(', ');
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-2xl shadow-md w-full max-w-md">
+    <h1 class="text-xl font-bold text-center text-gray-800 mb-4">Queue Reversal</h1>
+
+    <label for="inp" class="block text-sm text-gray-600 mb-2">Enter numbers (comma separated):</label>
+    <input
+      id="inp"
+      type="text"
+      class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+      placeholder="e.g., 1, 2, 3, 4"
+    />
+
+    <button
+      onclick="reverse()"
+      class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition"
+    >
+      Reverse
+    </button>
+
+    <p id="out" class="mt-5 text-center text-green-700 font-medium text-lg"></p>
+  </div>
+</body>
+</html>
